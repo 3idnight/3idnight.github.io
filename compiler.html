@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RISC-V CPU & C90 Compiler | Eva Littlewood</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <link href="css/aos.css" rel="stylesheet" />
+    <!-- main style -->
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+      
+      .slide {
+        display: none;
+        animation: fade 1.5s ease;
+      }
+      
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+      
+      .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      /* Navigation arrows */
+      .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0,0,0,0.3);
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+      }
+      
+      /* Navigation dots */
+      .dots-container {
+        text-align: center;
+        padding: 20px;
+      }
+      
+      .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        cursor: pointer;
+      }
+      
+      .active-dot {
+        background-color: #717171;
+      }
+
+      /* Project sections */
+      .project-section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="navbar-fixed-top">
+      <nav style="text-align: right; padding-right: 50px;">
+        <ul>
+          <li><a href="index.html">Back to Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- ./header -->
+
+    <!-- project content -->
+    <div class="section" id="project-content">
+      <div class="container">
+        <div class="col-md-12">
+          <h1 class="size-50">RISC-V CPU & C90 Compiler</h1>
+          <div class="h-50"></div>
+        </div>
+        
+        <div class="col-md-12">
+          <div class="slideshow-container" data-aos="fade-up">
+            <div class="slide">
+              <img src="img/portfolio/riscv1.png" alt="RISC-V CPU Architecture">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/riscv2.png" alt="CPU Pipeline Diagram">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/compiler1.png" alt="Compiler AST">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/compiler2.png" alt="Code Generation">
+            </div>
+
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+            <div class="dots-container">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="project-description" data-aos="fade-up">
+            <div class="project-section">
+              <h3>PROJECT SUMMARY COMING SOON!</h3>
+              <p>
+                Currently waiting for project to be marked before making this open source.
+              </p>
+
+              <h4>CPU Features</h4>
+              <ul>
+                <li>5-stage pipeline (Fetch, Decode, Execute, Memory, Writeback)</li>
+                <li>Full RV32I instruction set implementation</li>
+                <li>Data hazard detection and forwarding</li>
+                <li>Branch prediction unit</li>
+                <li>Cache memory system</li>
+              </ul>
+            </div>
+
+            <div class="project-section">
+              <h3>C90 Compiler Overview</h3>
+              <p>
+                Developed a complete C90 compiler that generates RISC-V assembly code, creating a full stack 
+                solution from high-level C code to executable machine code. The compiler implements sophisticated 
+                optimization techniques and generates efficient code for the custom RISC-V CPU.
+              </p>
+
+              <h4>Compiler Features</h4>
+              <ul>
+                <li>Full C90 standard compliance</li>
+              </ul>
+            </div>
+
+            <h3>Technologies Used</h3>
+            <ul>
+              <li>SystemVerilog for CPU implementation</li>
+              <li>C++ for compiler development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./project content -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--  plugins  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/aos.js"></script>
+    <!--  main script  -->
+    <script src="js/custom.js"></script>
+
+    <!-- Slideshow Script -->
+    <script>
+      let slideIndex = 1;
+
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          dots[i].className = dots[i].className.replace(" active-dot", "");
+        }
+        
+        // Show current slide
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active-dot";
+      }
+
+      function changeSlide(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      // Initialize slideshow
+      showSlides(slideIndex);
+    </script>
+  </body>
+</html> 

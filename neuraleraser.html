@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuralEraser | Eva Littlewood</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <link href="css/aos.css" rel="stylesheet" />
+    <!-- main style -->
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+      
+      .slide {
+        display: none;
+        animation: fade 1.5s ease;
+      }
+      
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+      
+      .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      
+      /* Navigation arrows */
+      .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0,0,0,0.3);
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+      }
+      
+      /* Navigation dots */
+      .dots-container {
+        text-align: center;
+        padding: 20px;
+      }
+      
+      .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        cursor: pointer;
+      }
+      
+      .active-dot {
+        background-color: #717171;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="navbar-fixed-top">
+      <nav style="text-align: right; padding-right: 50px;">
+        <ul>
+          <li><a href="index.html">Back to Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- ./header -->
+
+    <!-- project content -->
+    <div class="section" id="project-content">
+      <div class="container">
+        <div class="col-md-12">
+          <h1 class="size-50">NeuralEraser</h1>
+          <div class="h-50"></div>
+        </div>
+        
+        <div class="col-md-12">
+          <div class="slideshow-container" data-aos="fade-up">
+            <div class="slide">
+              <img src="img/portfolio/neuraleraser1.png" alt="NeuralEraser Project 1">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/neuraleraser2.png" alt="NeuralEraser Project 2">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/neuraleraser3.png" alt="NeuralEraser Project 3">
+            </div>
+            <div class="slide">
+              <img src="img/portfolio/neuraleraser4.png" alt="NeuralEraser Project 4">
+            </div>
+
+            <!-- Navigation arrows -->
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+            <div class="dots-container">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="project-description" data-aos="fade-up">
+            <h3>Links</h3>
+            <ul>
+              <li><a href="https://docs.google.com/document/d/1b6DHEJDcXIgaWvmUGFbKYInt8AqIcjxViVieHry6kic/edit?usp=sharing" target="_blank">Brief summary explaining NeuralEraser's current progress and methodology</a></li>
+              <li><a href="img/portfolio/[ e n s e m b l e ].pdf" target="_blank">[ e n s e m b l e ] slideshow</a></li>
+              <li><a href="https://www.arena.education/" taget="_blank">ARENA Course (used to self-study mechanistic interpretability fundamentals)</a></li>
+            </ul>
+            
+            <h3>Project Overview</h3>
+            <p>
+              The goal of NeuralEraser is to improve both our understanding and control over AI systems, particularly image models, to both improve their alignment with global human values and eliminate their potential to do wrongdoing. NeuralEraser uses sparse autoencoders to interpretably identify and robustly erase knowledge of specific artistic styles within stable diffusion models therefore ensuring that it is impossible for the model to generate specific images no matter what jailbreaking mechanisms are used on it. This significantly enhances fine-grained controllability and interpretability in generative image models by allowing the user to selectively and robustly unlearn specific styles in image models.
+            </p>
+
+
+            <h3>Project Status</h3>
+            <p>
+              [ CURRENTLY IN DEVELOPMENT ] Currently working on making the method more rebust against whitebox methods as detailed in the following paper: [link]
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./project content -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--  plugins  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/aos.js"></script>
+    <!--  main script  -->
+    <script src="js/custom.js"></script>
+
+    <!-- Slideshow Script -->
+    <script>
+      let slideIndex = 1;
+
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          dots[i].className = dots[i].className.replace(" active-dot", "");
+        }
+        
+        // Show current slide
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active-dot";
+      }
+
+      function changeSlide(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      // Initialize slideshow
+      showSlides(slideIndex);
+    </script>
+  </body>
+</html> 
