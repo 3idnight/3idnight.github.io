@@ -442,6 +442,7 @@ a.active {
 
 #projects {
     padding: 100px 0;
+    background: radial-gradient(ellipse at center, rgba(135, 206, 235, 0.3) 0%, rgba(70, 130, 180, 0.5) 100%);
 }
 
 .portfolio .categories-grid span {
