@@ -277,6 +277,7 @@ a.active {
 .table-cell {
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
 }
 
 .disply-table {
@@ -1021,15 +1022,13 @@ fieldset {
 
 
 #herobtn{
-    /* display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 0px; */
     display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
 }
 
-#githubdiv{
-    margin-left: 30px;
-}
+
 
 
 .Skills .container-skill .mainSkill .front .frontSkill:hover, .back .backSkill:hover, .datasci .datasciSkill:hover, .tools .toolsSkill:hover{
