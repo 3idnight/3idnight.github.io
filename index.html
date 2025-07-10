@@ -54,7 +54,6 @@
           <!-- <li><a href="#about">About</a></li> -->
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -63,6 +62,7 @@
     <!-- home -->
     <!-- home -->
     <div class="section" id="home" data-stellar-background-ratio="0.5">
+      <canvas id="koi-pond-canvas"></canvas>
       <div class="container">
         <div class="disply-table">
           <div id="profilediv">
@@ -471,138 +471,7 @@
       </div>
     </div>
 
-    <!-- contact -->
-    <div class="section" id="contact">
-      <div class="container">
-        <div class="col-md-12">
-          <h4>03</h4>
-          <h1 class="size-50">Contact Me</h1>
-          <div class="h-50"></div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up">
-          <h3>Email</h3>
-          <p>evabrlittlewood@outlook.com</p>
 
-          <h3>Social Network</h3>
-
-          <ul class="social">
-
-            <li>
-              <a href="https://www.linkedin.com/in/eva-littlewood-499997213/" target="_blank"><i class="ion-social-linkedin"></i></a>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-          <div class="h-50"></div>
-        </div>
-        <div class="col-md-8" data-aos="fade-up">
-          <form
-            class="contact-bg"
-            id="contact-form"
-            name="contact"
-            method="post"
-            novalidate="novalidate"
-          >
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              placeholder="Your Name"
-            />
-            <input
-              type="email"
-              name="email"
-              class="form-control"
-              placeholder="Your E-mail"
-            />
-            <input
-              type="text"
-              name="phone"
-              class="form-control"
-              placeholder="Phone Number"
-            />
-            <textarea
-              name="message"
-              class="form-control"
-              placeholder="Your Message"
-              style="height: 120px"
-            ></textarea>
-            <button
-              id="submit"
-              type="submit"
-              name="submit"
-              class="btn btn-glance"
-            >
-              Send
-            </button>
-            <div id="success">
-              <p class="green textcenter">
-                Your message was sent successfully! I will be in touch as soon
-                as I can.
-              </p>
-            </div>
-            <div id="error">
-              <p>
-                Something went wrong, try refreshing and submitting the form
-                again.
-              </p>
-            </div>
-          </form>
-
-          <script>
-            const form = document.getElementById("contact-form");
-            form.addEventListener("submit", formSubmit);
-
-            function formSubmit(e) {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-
-                console.log(formData);
-
-                       // Check if required fields are empty
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const message = formData.get('message');
-                
-                if (!name || !email || !message) {
-                    alert("Please fill in all the required fields (name, email, and message).");
-                    return;
-                }
-
-                // Check if email is valid
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email)) {
-                    alert("Please enter a valid email address.");
-                    return;
-                }
-
-                fetch("https://getform.io/f/awngzdvb", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "Accept": "application/json",
-                    },
-                })
-                .then(response => {
-                    console.log(response)
-                    $('#contact :input').attr('disabled', 'disabled');
-                    $('#contact').fadeTo("slow", 1, function () {
-                        $(this).find(':input').attr('disabled', 'disabled');
-                        $(this).find('label').css('cursor', 'default');
-                        $('#success').fadeIn();
-                    });
-                })
-                .catch(error => {
-                    console.log(error)
-                    $('#contact').fadeTo("slow", 1, function () {
-                        $('#error').fadeIn();
-                    });
-                })
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-    <!-- ./contact -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -635,6 +504,24 @@
 
     <!--  main script  -->
     <script src="js/custom.js"></script>
+    
+    <!-- Koi Pond Animation -->
+    <script src="js/koi-pond.js"></script>
+    <script>
+      // Initialize the Koi Pond animation when the page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        const koiPond = new KoiPond('koi-pond-canvas', 25, 8);
+        
+        // Optional: Add click interaction to drop food
+        const canvas = document.getElementById('koi-pond-canvas');
+        canvas.addEventListener('click', function(e) {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          koiPond.addFood(x, y);
+        });
+      });
+    </script>
   </body>
   
 </html>
