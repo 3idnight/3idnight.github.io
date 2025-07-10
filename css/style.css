@@ -792,16 +792,85 @@ fieldset {
     }
 }
 
+@media (max-width: 768px) {
+    .disply-table {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    #profilediv {
+        order: 2;
+        margin-top: 30px;
+    }
+
+    #profilepic {
+        width: 250px;
+        max-width: 80vw;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .table-cell {
+        order: 1;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .table-cell h2 {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+
+    #element {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    #herobtn {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .resumediv {
+        width: 200px;
+        margin: 0;
+    }
+}
+
 @media (max-width: 500px) {
     h1 {
         font-family: 'Playfair Display', serif;
         font-size: 50px;
         line-height: 50px;
     }
-    #home,
-    .disply-table {
-        height: 600px;
+    
+    .table-cell h2 {
+        font-size: 28px;
+        line-height: 36px;
     }
+
+    #element {
+        font-size: 20px;
+    }
+
+    #profilepic {
+        width: 200px;
+    }
+
+    .resumediv {
+        width: 180px;
+    }
+    
     .about-border {
         width: 265px;
     }
@@ -816,36 +885,28 @@ fieldset {
         margin: 6px;
     }
     nav li a {
-        font-size: 6px;
+        font-size: 10px;
     }
     nav ul {
         padding: 20px 0px;
     }
-    #home {
-        height: 760px;
-    
-    }
-    #profilepic{
-        margin: 40px 30px 0px 50px;
-        width: 300px;
-    }
-    .table-cell{
-        display: block;
-        margin: 120px 30px 0px 24px;
 
-    }
-    .table-cell h1{
-        font-size: 30px;
-    }
-    .table-cell h4{
-        font-size: 20px;
-        margin-left: 0px;
-    }
-    .resumediv{
-        margin-top: 0px;
-        width: 120px;
+    .table-cell h2 {
+        font-size: 24px;
+        line-height: 32px;
     }
 
+    #element {
+        font-size: 18px;
+    }
+
+    #profilepic {
+        width: 180px;
+    }
+
+    .resumediv {
+        width: 160px;
+    }
 }
 
   .resumediv a{
